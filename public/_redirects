@@ -1,0 +1,2 @@
+# Redirect all .txt requests to their HTML counterparts
+/*/*.txt    /:splat    301
