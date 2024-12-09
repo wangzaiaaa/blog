@@ -34,7 +34,7 @@ const Navbar = () => {
           <div className="flex-grow flex justify-center">
             <Menu
               mode="horizontal"
-              selectedKeys={[pathname]}
+              selectedKeys={[pathname || '/']}
               className="flex justify-center bg-transparent border-b-0"
               style={{ width: "auto" }}
             >

@@ -34,7 +34,7 @@ const Card: React.FC<CardProps> = ({ image, title, author, date, link }) => {
           description={
             <div className={theme === "dark" ? "text-gray-300" : ""}>
               <p>{author}</p>
-              <p>{date}</p>
+              <p>{new Date(date).toLocaleDateString()}</p>
             </div>
           }
         />
