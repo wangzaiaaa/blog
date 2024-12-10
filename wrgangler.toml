@@ -1,0 +1,15 @@
+name = "blog"
+type = "webpack"
+account_id = "2627894288@qq.com"
+workers_dev = true
+
+[site]
+bucket = "./out"
+entry-point = "workers-site"
+
+[build]
+command = "npm run build"
+upload.format = "service-worker"
+
+[build.upload]
+format = "service-worker"
