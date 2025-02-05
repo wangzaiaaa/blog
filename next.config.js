@@ -8,7 +8,7 @@ const nextConfig = {
   images: {
     unoptimized: true, // 禁用图片优化
   },
-  exportTrailingSlash: true,
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;
