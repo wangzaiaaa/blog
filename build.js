@@ -11,11 +11,33 @@ function processDirectory(dir) {
     const stat = fs.statSync(fullPath);
     
     if (stat.isDirectory()) {
+      // 如果是blog目录下的子目录，确保创建index.html
+      if (fullPath.includes('/blog/') && !item.endsWith('.html')) {
+        const indexPath = path.join(fullPath, 'index.html');
+        const txtPath = path.join(fullPath, 'index.txt');
+        if (fs.existsSync(txtPath)) {
+          fs.renameSync(txtPath, indexPath);
+          console.log(`Renamed: ${txtPath} -> ${indexPath}`);
+        }
+      }
       processDirectory(fullPath);
     } else if (stat.isFile() && item.endsWith('.txt')) {
-      const newPath = fullPath.replace(/\.txt$/, '.html');
-      fs.renameSync(fullPath, newPath);
-      console.log(`Renamed: ${fullPath} -> ${newPath}`);
+      // 如果是blog目录下的txt文件，将其移动到同名目录下的index.html
+      if (fullPath.includes('/blog/')) {
+        const dirPath = fullPath.replace(/\.txt$/, '');
+        const indexPath = path.join(dirPath, 'index.html');
+        
+        if (!fs.existsSync(dirPath)) {
+          fs.mkdirSync(dirPath, { recursive: true });
+        }
+        
+        fs.renameSync(fullPath, indexPath);
+        console.log(`Renamed and moved: ${fullPath} -> ${indexPath}`);
+      } else {
+        const newPath = fullPath.replace(/\.txt$/, '.html');
+        fs.renameSync(fullPath, newPath);
+        console.log(`Renamed: ${fullPath} -> ${newPath}`);
+      }
     }
   }
 }

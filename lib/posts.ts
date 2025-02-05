@@ -13,10 +13,6 @@ export interface BlogPost {
   content: string
 }
 
-function decodeFileName(fileName: string): string {
-  return decodeURIComponent(decodeURIComponent(fileName))
-}
-
 export function getAllPostIds() {
   if (!fs.existsSync(postsDirectory)) {
     console.error(`Directory not found: ${postsDirectory}`);
@@ -25,12 +21,12 @@ export function getAllPostIds() {
 
   const fileNames = fs.readdirSync(postsDirectory)
   return fileNames.map(fileName => ({
-    id: encodeURIComponent(fileName.replace(/\.md$/, ''))
+    id: fileName.replace(/\.md$/, '')
   }))
 }
 
 export function getBlogPost(id: string): BlogPost | null {
-  const decodedId = decodeFileName(id)
+  const decodedId = decodeURIComponent(id)
   const fileNames = fs.readdirSync(postsDirectory)
   const fileName = fileNames.find(name => name.replace(/\.md$/, '') === decodedId)
 
