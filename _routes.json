@@ -6,6 +6,10 @@
     {
       "src": "/blog/([^/]+)/?$",
       "dest": "/blog/$1/index.html"
+    },
+    {
+      "src": "/tools/([^/]+)/?$",
+      "dest": "/tools/$1/index.html"
     }
   ]
 }

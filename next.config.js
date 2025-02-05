@@ -8,9 +8,7 @@ const nextConfig = {
   images: {
     unoptimized: true, // 禁用图片优化
   },
-  trailingSlash: true,
-  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://blog.keepdev.fun' : '',
-  basePath: process.env.NODE_ENV === 'production' ? '' : '',
+  trailingSlash: true
 };
 
 module.exports = nextConfig;
