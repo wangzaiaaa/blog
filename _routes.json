@@ -5,11 +5,12 @@
   "routes": [
     {
       "src": "/blog/([^/]+)/?$",
-      "dest": "/blog/$1/index.html"
+      "dest": "/blog/$1.html"
     },
     {
       "src": "/tools/([^/]+)/?$",
-      "dest": "/tools/$1/index.html"
+      "dest": "/tools/$1.html"
     }
+    
   ]
 }
