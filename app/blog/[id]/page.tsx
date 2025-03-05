@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { getBlogPost, getAllPostIds, BlogPost } from '@/lib/posts'
 import ReactMarkdown from 'react-markdown'

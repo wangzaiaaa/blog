@@ -76,6 +76,6 @@ export function getAllBlogPosts(): BlogPost[] {
       image: data.image || "/placeholder.jpg",
       content,
     }
-  })
+  }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
