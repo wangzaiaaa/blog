@@ -1,42 +1,28 @@
-'use client'
+// 移除 'use client'
+import { getBlogPost, getAllPostIds } from '@/lib/posts'
+import BlogPostClient from '@/app/components/BlogPostClient' // 导入新的客户端组件
+import { notFound } from 'next/navigation'; // 用于处理未找到文章的情况
 
-import React from 'react'
-import { getBlogPost, getAllPostIds, BlogPost } from '@/lib/posts'
-import ReactMarkdown from 'react-markdown'
-import rehypeHighlight from 'rehype-highlight'
-import rehypeRaw from 'rehype-raw'
-import remarkGfm from 'remark-gfm'
-import Image from 'next/image'
-import 'highlight.js/styles/github-dark.css'
-
+// generateStaticParams 保持不变，它在构建时运行
 export async function generateStaticParams() {
   const posts = getAllPostIds()
-  return posts
+  // 确保返回正确的格式 { id: string }[]
+  return posts.map(post => ({ id: post.id }))
 }
 
-export default async function BlogPostPage({ params }: { params: { id: string } }) {
+// 这个页面是服务器组件，在构建时为每个静态路径执行
+export default function BlogPostPage({ params }: { params: { id: string } }) {
+  // 直接在服务器组件（构建时）获取数据
   const post = getBlogPost(params.id)
 
+  // 如果文章未找到，构建时会出错或生成一个表示未找到的页面
+  // 使用 notFound() 是更标准的处理方式
   if (!post) {
-    return <div className="p-6 max-w-3xl mx-auto">Post not found</div>
+    notFound();
   }
 
-  return (
-    <div className="p-6 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-      <p className="text-gray-600 mb-4">
-        作者：{post.author} 发布于：{new Date(post.date).toLocaleDateString('zh-CN')}
-      </p>
-      <div className="prose dark:prose-invert max-w-none">
-        <ReactMarkdown
-          rehypePlugins={[rehypeHighlight, rehypeRaw]}
-          remarkPlugins={[remarkGfm]}
-        >
-          {post.content}
-        </ReactMarkdown>
-      </div>
-      
-    </div>
-  )
+  // 将获取到的数据传递给客户端组件进行渲染
+  // BlogPostClient 只接收序列化的数据，不涉及 fs 模块
+  return <BlogPostClient post={post} />
 }
 
