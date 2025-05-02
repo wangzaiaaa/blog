@@ -1,6 +1,7 @@
 ---
 title: SOLID原则
 date: 2021-09-12 14:41:55
+image: https://image.keepdev.fun/avator.jpg
 tags:
 - 设计原则
 ---

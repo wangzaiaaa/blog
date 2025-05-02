@@ -1,6 +1,7 @@
 ---
 title: Java并发之Atomic类
 date: 2021-10-24 10:31:32
+image: https://image.keepdev.fun/avator.jpg
 tags:
 - 并发编程
 ---

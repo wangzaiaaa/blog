@@ -1,6 +1,7 @@
 ---
 title: Java并发编程基础
 date: 2021-10-10 21:07:53
+image: https://image.keepdev.fun/avator.jpg
 tags:
 - 并发编程
 ---
