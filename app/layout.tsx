@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Your Name - Personal Website",
-  description: "A personal website showcasing portfolio, tools, and blog",
+  title: "旺仔的个人网站",
+  description: "分享个人作品、博客、开发工具等",
 };
 
 export default function RootLayout({
