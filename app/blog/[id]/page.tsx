@@ -11,9 +11,10 @@ export async function generateStaticParams() {
 }
 
 // 这个页面是服务器组件，在构建时为每个静态路径执行
-export default function BlogPostPage({ params }: { params: { id: string } }) {
+export default async function BlogPostPage({ params }: { params: Promise<{ id: string }> }) {
   // 直接在服务器组件（构建时）获取数据
-  const post = getBlogPost(params.id)
+  const { id } = await params
+  const post = getBlogPost(id)
 
   // 如果文章未找到，构建时会出错或生成一个表示未找到的页面
   // 使用 notFound() 是更标准的处理方式

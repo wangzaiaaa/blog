@@ -10,7 +10,7 @@ const About = () => {
       <div className="mb-6">
         <h2 className="text-xl font-semibold">联系方式</h2>
         <div className="flex justify-center space-x-6 mt-4">
-          <a href="mailto:your-email@example.com" target="_blank" rel="noreferrer">
+          <a href="mailto:hello@keepdev.fun" target="_blank" rel="noreferrer">
             📧 邮箱
           </a>
           <a href="https://github.com/wangzaiaaa" target="_blank" rel="noreferrer">
@@ -22,7 +22,7 @@ const About = () => {
 
       <div className='flex items-center justify-center'>
         
-        <div className="mt-4">
+        <div className="mt-4" >
           <Image
             src="/wechat_code.jpg" // 确保二维码图片文件位于 public 文件夹中
             alt="微信公众号二维码"
@@ -31,15 +31,7 @@ const About = () => {
             
           />
         </div>
-        <div className="mt-4">
-          <Image
-            src="/book.jpg" // 确保二维码图片文件位于 public 文件夹中
-            alt=""
-            width={200}
-            height={200}
-            
-          />
-        </div>
+        
       </div>
     </div>
   );

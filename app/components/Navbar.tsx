@@ -25,6 +25,34 @@ const Navbar = () => {
     return null;
   }
 
+  const items = [
+    {
+      key: "/",
+      icon: <HomeOutlined />,
+      label: <Link href="/">主页</Link>,
+    },
+    {
+      key: "/portfolio",
+      icon: <AppstoreOutlined />,
+      label: <Link href="/portfolio">作品集</Link>,
+    },
+    {
+      key: "/tools",
+      icon: <ToolOutlined />,
+      label: <Link href="/tools">工具集</Link>,
+    },
+    {
+      key: "/blog",
+      icon: <ReadOutlined />,
+      label: <Link href="/blog">博客</Link>,
+    },
+    {
+      key: "/about",
+      icon: <UserOutlined />,
+      label: <Link href="/about">关于我</Link>,
+    },
+  ];
+
   return (
     <nav
       className={`sticky top-0 z-10 ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}
@@ -37,25 +65,8 @@ const Navbar = () => {
               selectedKeys={[pathname || '/']}
               className="flex justify-center bg-transparent border-b-0"
               style={{ width: "auto" }}
-            >
-              <Menu.Item key="/" icon={<HomeOutlined />}>
-                <Link href="/">主页</Link>
-              </Menu.Item>
-              <Menu.Item key="/portfolio" icon={<AppstoreOutlined />}>
-                <Link href="/portfolio">作品集</Link>
-              </Menu.Item>
-
-              <Menu.Item key="/tools" icon={<ToolOutlined />}>
-                <Link href="/tools">工具集</Link>
-              </Menu.Item>
-              <Menu.Item key="/blog" icon={<ReadOutlined />}>
-                <Link href="/blog">博客</Link>
-              </Menu.Item>
-
-              <Menu.Item key="/about" icon={<UserOutlined />}>
-                <Link href="/about">关于我</Link>
-              </Menu.Item>
-            </Menu>
+              items={items}
+            />
           </div>
           <div className="ml-4">
             <ThemeToggle />
